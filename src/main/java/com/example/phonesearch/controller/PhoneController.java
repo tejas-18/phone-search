@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/")
@@ -25,22 +26,23 @@ public class PhoneController {
     }
     // localhost:9091/v1/sms/Tejas
 
-//    @GetMapping("/getAllPhones")
-//    List<Phone> getAllPhone(){
-//        List<Phone> listOfPhone = phoneService.getListOfPhone();
-//        System.out.println(listOfPhone);
-//        return listOfPhone;
-//    }
-@GetMapping("/getAllPhones")
-public ResponseEntity<List<Phone>> getAllPhones() {
-    try {
-        List<Phone> listOfPhones = phoneService.getListOfPhone();
-        return ResponseEntity.ok(listOfPhones);
-    } catch (Exception e) {
-        // Log the exception or return an appropriate error response
-        e.printStackTrace();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    @GetMapping("/getAllPhones")
+    List<Phone> getAllPhone(){
+        List<Phone> listOfPhone = phoneService.getListOfPhone();
+        System.out.println(listOfPhone);
+        return listOfPhone;
     }
-}
+
+    @GetMapping("/getPhone/{id}")
+    public ResponseEntity<Phone> getPhoneById(@PathVariable Long id) {
+        Optional<Phone> phoneOptional = phoneService.getPhoneById(id);
+        if (phoneOptional.isPresent()) {
+            return ResponseEntity.ok(phoneOptional.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 
 }
