@@ -4,13 +4,13 @@ import csv
 # MySQL database configuration
 db_config = {
     'host': 'localhost',
-    'user': '',
-    'password': '',
-    'database': ''
+    'user': 'ubuntu',
+    'password': 'ubuntu',
+    'database': 'phone'
 }
 
 # Path to your CSV file
-csv_file = 
+csv_file = 'smartphones.csv'
 
 # Connect to MySQL database
 conn = mysql.connector.connect(**db_config)
