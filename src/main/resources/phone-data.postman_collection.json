@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "f5d904b7-f1d2-4099-af75-d4ed6e491a8e",
+		"name": "phone-data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30285041"
+	},
+	"item": [
+		{
+			"name": "load-data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/mikhilesh_pc/Desktop/GitHub Mikhi/Collaboration/phone-search/src/main/resources/phone_data.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9091/v2/uploadExcel",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"v2",
+						"uploadExcel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-phones",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/mikhilesh_pc/Desktop/GitHub Mikhi/Collaboration/phone-search/src/main/resources/phone_data.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9091/v1/getAllPhones",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"v1",
+						"getAllPhones"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
